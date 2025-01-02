@@ -33,7 +33,7 @@ jobs:
     # User with access to your FTP share
                 ftp-user: u741009258
     # Your FTP password
-                ftp-password: %Hw8YZ7EJyFG3s#v3Sss # optional, default is 1024M
+                ftp-password: XZ~>BI+Q15VL#3Qp
     # Folder where are files you want upload to the server
                 source-folder: ./public_html/
     
