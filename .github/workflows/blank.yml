@@ -35,5 +35,5 @@ jobs:
     # Your FTP password
                 ftp-password: XZ~>BI+Q15VL#3Qp
     # Folder where are files you want upload to the server
-                source-folder: ./public_html/
+                source-folder: ./public/
     
