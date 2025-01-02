@@ -22,18 +22,26 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-            - name: Deploy to FTP
-  # You may pin to the exact commit or the version.
-  # uses: vivid-rain7267/action-ftp-deployment@ebc5f9b8a6f6dd8ec5d8e6228d466d87adc34db2
-              uses: vivid-rain7267/action-ftp-deployment@v18
-              with:
-    # Address of your FTP server
-                ftp-server: ftp://46.202.145.101:21
-    # User with access to your FTP share
-                ftp-user: u741009258
-    # Your FTP password
-                ftp-password: XZ~>BI+Q15VL#3Qp
-    # Folder where are files you want upload to the server
-                source-folder: ./public/
-    
+      # Step to check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step to list files in the source-folder for debugging
+      - name: List files in source-folder
+        run: |
+          echo "Listing files in ./public/"
+          ls -la ./public/
+
+      # Step to deploy to FTP
+      - name: Deploy to FTP
+        uses: vivid-rain7267/action-ftp-deployment@v18
+        with:
+          # Address of your FTP server
+          ftp-server: ftp://46.202.145.101:21
+          # User with access to your FTP share
+          ftp-user: u741009258
+          # Your FTP password
+          ftp-password: XZ~>BI+Q15VL#3Qp
+          # Folder where files to upload are located
+          source-folder: ./public_html/
+
