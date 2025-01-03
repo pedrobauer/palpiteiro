@@ -1,47 +1,40 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Step to check out the repository
+      # Checkout do repositório
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step to list files in the source-folder for debugging
+      # Etapa para criar o diretório public caso ele não exista
+      - name: Create public directory
+        run: mkdir -p ./public
+
+      # Etapa opcional para gerar arquivos no diretório ./public/
+      - name: Generate files (optional)
+        run: echo "Hello, world!" > ./public/index.html
+
+      # Listar os arquivos no diretório ./public/
       - name: List files in source-folder
         run: |
           echo "Listing files in ./public/"
           ls -la ./public/
 
-      # Step to deploy to FTP
+      # Etapa para fazer o deploy via FTP
       - name: Deploy to FTP
         uses: vivid-rain7267/action-ftp-deployment@v18
         with:
-          # Address of your FTP server
           ftp-server: ftp://46.202.145.101:21
-          # User with access to your FTP share
           ftp-user: u741009258
-          # Your FTP password
           ftp-password: XZ~>BI+Q15VL#3Qp
-          # Folder where files to upload are located
-          source-folder: ./public_html/
-
+          source-folder: ./public/
