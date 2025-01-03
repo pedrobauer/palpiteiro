@@ -37,4 +37,4 @@ jobs:
           ftp-server: ftp://46.202.145.101:21
           ftp-user: u741009258
           ftp-password: XZ~>BI+Q15VL#3Qp
-          source-folder: ./public/
+          source-folder: ./public_html/
